@@ -21,7 +21,7 @@ jobs:
     - name: Setup Gitversion
       run: |
         "`${env:event_name}: [${env:event_name}]"
-        dotnet tool install -g gitversion.yool
+        dotnet tool install -g gitversion.tool
         dotnet-gitversion
         
     - name: Restore dependencies
