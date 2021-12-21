@@ -34,7 +34,7 @@ jobs:
         
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build Debug
+    - name: Build Debug and Test
       if: ${{ github.event_name != 'release' }}
       run: |
         dotnet build -c Debug --no-restore 
