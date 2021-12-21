@@ -37,7 +37,7 @@ public class ServiceContainerExtensionsTests
     [Fact]
     public void GetService_DependencyInitializer_Test()
     {
-        TestObject testObject = 
+        TestObject testObject =
             Provider.GetService<TestObject>(TestObject._dependencyInitializer);
 
         testObject.Should()
@@ -61,7 +61,7 @@ public class ServiceContainerExtensionsTests
     [Fact]
     public void GetService_ArrayInitializer_Test()
     {
-        TestObject testObject = 
+        TestObject testObject =
             Provider.GetService<TestObject>(TestObject.Definitions);
 
         testObject.Should()

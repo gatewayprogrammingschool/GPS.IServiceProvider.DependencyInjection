@@ -71,7 +71,7 @@ try {
             }
 
         "Publish Finished Successfully."
-    } 
+    }
     else {
         throw "No csproj file in $PWD (recursive)."
     }

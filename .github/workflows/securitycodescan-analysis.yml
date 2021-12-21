@@ -27,19 +27,19 @@ jobs:
       - name: Setup .NET 3.1.x
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 3.1.x       
+          dotnet-version: 3.1.x
       - name: Setup .NET 5.0.x
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 5.0.x       
+          dotnet-version: 5.0.x
       - name: Setup .NET 6.0.x
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 6.0.x   
+          dotnet-version: 6.0.x
       - name: Set up projects for analysis
         uses: security-code-scan/security-code-scan-add-action@f8ff4f2763ed6f229eded80b1f9af82ae7f32a0d
-        
-      - name: Restore dependencies	
+
+      - name: Restore dependencies
         run: dotnet restore
 
       - name: Build
