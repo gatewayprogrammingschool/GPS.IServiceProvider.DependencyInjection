@@ -42,4 +42,4 @@ jobs:
         
     - name: Build Release and Publish
       if: ${{ github.event_name == 'release' }}
-      run: pwsh -nol -nop -f ./scripts/publish.ps1 "${{ secrets:NUGET_TOKEN }}"
+      run: pwsh -nol -nop -f ./scripts/publish.ps1 "${{ secrets.NUGET_TOKEN }}"
