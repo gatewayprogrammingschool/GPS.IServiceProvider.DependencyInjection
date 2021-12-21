@@ -1,25 +1,46 @@
 name: .NET
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  release:
+  workflow_dispatch:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
+    env:
+      event_name: ${{ github.event_name }}
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v1
+      
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.x
+        dotnet-version: 6.0.x       
+    - name: Setup Gitversion
+      run: |
+        "`${env:event_name}: [${env:event_name}]"
+        dotnet tool install -g gitversion.yool
+        dotnet-gitversion
+        
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+    - name: Build Debug
+      if: ${{ github.event_name != 'release' }}
+      run: dotnet build -c Debug --no-restore 
+    - name: Build Release
+      if: ${{ github.event_name == 'release' }}
+      run: dotnet build -c Release --no-restore 
+    - name: Tests
+      run: dotnet test --no-build
+    - name: Publish
+      if: ${{ github.event_name == 'release' }}
+      run: | 
+        $packages - gci *.symbols.nupkg -Directory src\** -ErrorAction Stop
+
+        $packages.FullName
+        
+        $packages.FullName | forEach-Object -process {
+          dotnet nuget push $_ -k "${{ secrets.NUGET_KEY }}" -s https://api.nuget.org/v3/index.json --skip-duplicate
+        }
