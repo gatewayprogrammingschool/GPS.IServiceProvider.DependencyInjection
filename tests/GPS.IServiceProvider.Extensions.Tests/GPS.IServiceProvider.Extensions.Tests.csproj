@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\GPS.Microsoft.Extensions.DepedencyInjection\GPS.Microsoft.Extensions.DependencyInjection.csproj" />
+    <ProjectReference Include="..\..\src\GPS.IServiceProvider.Extensions\GPS.IServiceProvider.Extensions.csproj" />
   </ItemGroup>
 
 </Project>

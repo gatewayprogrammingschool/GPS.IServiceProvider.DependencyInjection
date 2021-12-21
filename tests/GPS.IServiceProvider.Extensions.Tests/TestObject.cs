@@ -1,4 +1,4 @@
-﻿namespace GPS.Microsoft.Extensions.DependencyInjection.Tests;
+﻿namespace GPS.IServiceProvider.Extensions.Tests;
 
 using System.Collections.Generic;
 using System.Linq;

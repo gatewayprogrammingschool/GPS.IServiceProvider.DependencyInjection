@@ -1,4 +1,4 @@
-﻿namespace GPS.Microsoft.Extensions.DependencyInjection;
+﻿namespace GPS.IServiceProvider.Extensions;
 
 public class InvalidInitializerDefinition : Exception
 {

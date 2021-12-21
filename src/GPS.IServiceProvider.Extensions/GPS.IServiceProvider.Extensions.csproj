@@ -10,13 +10,15 @@
     <Company>Gateway Programming School, Inc.</Company>
     <Description>Provides extension methods for initializing an object when obtaining from IServiceProvider.</Description>
     <Copyright>2021</Copyright>
-    <PackageProjectUrl>https://github.com/gatewayprogrammingschool/GPS.Microsoft.Extensions.DepedencyInjection</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/gatewayprogrammingschool/GPS.IServiceProvider.Extensions</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/gatewayprogrammingschool/GPS.Microsoft.Extensions.DepedencyInjection</RepositoryUrl>
+    <RepositoryUrl>https://github.com/gatewayprogrammingschool/GPS.IServiceProvider.Extensions</RepositoryUrl>
     <PackageTags>Extensions DependencyInjection</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSource>true</IncludeSource>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">

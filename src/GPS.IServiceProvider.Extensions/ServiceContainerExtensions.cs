@@ -1,10 +1,10 @@
 ﻿// ReSharper disable UnusedMember.Global
-namespace GPS.Microsoft.Extensions.DependencyInjection;
+namespace GPS.IServiceProvider.Extensions;
 
 public static class ServiceContainerExtensions
 {
     public static TType GetService<TType>(
-        this IServiceProvider provider,
+        this System.IServiceProvider provider,
         DependencyInitializer initializer
     )
     {
@@ -19,7 +19,7 @@ public static class ServiceContainerExtensions
     }
 
     public static TType GetService<TType>(
-        this IServiceProvider provider,
+        this System.IServiceProvider provider,
         params DependencyInitializer.Definition[] definitions
     )
     {
@@ -34,7 +34,7 @@ public static class ServiceContainerExtensions
     }
 
     public static TType GetService<TType>(
-        this IServiceProvider provider,
+        this System.IServiceProvider provider,
         IEnumerable<DependencyInitializer.Definition> definitions
     )
     {

@@ -1,6 +1,6 @@
 ﻿#pragma warning disable CS0649
 
-namespace GPS.Microsoft.Extensions.DependencyInjection.Tests;
+namespace GPS.IServiceProvider.Extensions.Tests;
 
 using System;
 using System.Reflection;
@@ -12,8 +12,6 @@ using System.Collections.Generic;
 using System.Linq;
 
 using FluentAssertions;
-
-using DependencyInjection;
 
 public partial class DependencyInitializerTests
 {

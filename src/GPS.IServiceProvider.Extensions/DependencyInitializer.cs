@@ -1,5 +1,5 @@
 ﻿// ReSharper disable UnusedMember.Global
-namespace GPS.Microsoft.Extensions.DependencyInjection;
+namespace GPS.IServiceProvider.Extensions;
 
 using System.Reflection;
 

@@ -1,6 +1,6 @@
 ﻿#pragma warning disable CS0649
 
-namespace GPS.Microsoft.Extensions.DependencyInjection.Tests;
+namespace GPS.IServiceProvider.Extensions.Tests;
 
 using System;
 using System.Reflection;
