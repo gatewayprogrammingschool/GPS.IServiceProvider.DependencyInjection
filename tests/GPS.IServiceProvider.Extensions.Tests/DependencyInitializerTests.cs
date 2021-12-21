@@ -24,7 +24,7 @@ public partial class DependencyInitializerTests
     {
         Output = output;
 
-        TestObject._dependencyInitializer = new DependencyInitializer
+        TestObject.DependencyInitializer = new DependencyInitializer
         {
             Definitions = new List<DependencyInitializer.Definition>(TestObject.Definitions),
         };
@@ -105,7 +105,7 @@ public partial class DependencyInitializerTests
     {
         TestObject testObject = new();
 
-        TestObject._dependencyInitializer.Apply(testObject);
+        TestObject.DependencyInitializer.Apply(testObject);
 
         testObject._intField.Should()
             .Be(GetValueType<int>(0));
@@ -135,7 +135,7 @@ public partial class DependencyInitializerTests
     {
         Action invalidApply = static () =>
         {
-            TestObject._dependencyInitializer.Apply(
+            TestObject.DependencyInitializer.Apply(
                 new
                 {
                 }

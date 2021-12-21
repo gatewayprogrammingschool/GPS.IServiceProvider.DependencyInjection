@@ -5,7 +5,7 @@ param(
 
 $exitCode = 0;
 
-function Process-ExitCode {
+function Test-ExitCode {
     param(
         [int]$LEC,
         [string]$ErrorDescription)
@@ -34,7 +34,7 @@ try {
 
         & dotnet build $csproj -c Release --no-restore #--nologo -v quiet
 
-        Process-ExitCode $LASTEXITCODE "Failed to build [${project.FullName}]."
+        Test-ExitCode $LASTEXITCODE "Failed to build [${project.FullName}]."
 
         "Getting Packages..."
 
@@ -63,7 +63,7 @@ try {
                         "WhatIf: & dotnet nuget push $FullName -k `"${token}`" -s 'https://api.nuget.org/v3/index.json' --skip-duplicate"
                     }
 
-                    Process-ExitCode $LASTEXITCODE "Failed to build [${project.FullName}]."
+                    Test-ExitCode $LASTEXITCODE "Failed to build [${project.FullName}]."
                 }
                 catch {
                     throw $_

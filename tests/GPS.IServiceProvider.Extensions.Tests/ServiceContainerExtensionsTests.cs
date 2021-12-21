@@ -38,7 +38,7 @@ public class ServiceContainerExtensionsTests
     public void GetService_DependencyInitializer_Test()
     {
         TestObject testObject =
-            Provider.GetService<TestObject>(TestObject._dependencyInitializer);
+            Provider.GetService<TestObject>(TestObject.DependencyInitializer);
 
         testObject.Should()
             .NotBeNull();
