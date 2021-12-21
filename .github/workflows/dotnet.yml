@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     env:
       event_name: ${{ github.event_name }}
 
@@ -17,10 +17,18 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
+        dotnet-version: 3.1.x       
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x       
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
         dotnet-version: 6.0.x       
     - name: Setup Gitversion
       run: |
-        "`${env:event_name}: [${env:event_name}]"
+        dotnet tool install -g PowerShell
         dotnet tool install -g gitversion.tool
         dotnet-gitversion
         
@@ -37,10 +45,9 @@ jobs:
     - name: Publish
       if: ${{ github.event_name == 'release' }}
       run: | 
-        $packages - gci *.symbols.nupkg -Directory src\** -ErrorAction Stop
-
-        $packages.FullName
-        
-        $packages.FullName | forEach-Object -process {
-          dotnet nuget push $_ -k "${{ secrets.NUGET_KEY }}" -s https://api.nuget.org/v3/index.json --skip-duplicate
-        }
+        pwsh -c "{
+          $packages - gci *.symbols.nupkg -Directory src\** -ErrorAction Stop
+          $packages.FullName
+          $packages.FullName | forEach-Object -process {
+            dotnet nuget push $_ -k "${{ secrets.NUGET_KEY }}" -s https://api.nuget.org/v3/index.json --skip-duplicate
+          }"
