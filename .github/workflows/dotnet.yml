@@ -36,16 +36,14 @@ jobs:
       run: dotnet restore
     - name: Build Debug
       if: ${{ github.event_name != 'release' }}
-      run: dotnet build -c Debug --no-restore 
-    - name: Build Release
+      run: |
+        dotnet build -c Debug --no-restore 
+        dotnet test --no-build
+        
+    - name: Build Release and Publish
       if: ${{ github.event_name == 'release' }}
-      run: dotnet build -c Release --no-restore 
-    - name: Tests
-      if: ${{ github.event_name != 'release' }}
-      run: dotnet test --no-build
-    - name: Publish
-      if: ${{ github.event_name == 'release' }}
-      run: | 
+      run: |
+        dotnet build -c Release --no-restore 
         pwsh -c "{
           $packages - gci *.symbols.nupkg -Directory src\** -ErrorAction Stop
           $packages.FullName
