@@ -1,5 +1,6 @@
 param(
-    [string]$token=$null,
+    [string]$Token=$null,
+    [string]$Source='https://api.nuget.org/v3/index.json',
     [switch]$WhatIf=$false
 )
 
@@ -55,12 +56,12 @@ try {
                 $package = $_
 
                 try {
-                    $fullName = $_.FullName
+                    $fullName = $package.FullName
 
                     if(!$WhatIf) {
-                        & dotnet nuget push $FullName -k "${token}" -s 'https://api.nuget.org/v3/index.json' --skip-duplicate
+                        & dotnet nuget push $FullName -k "${token}" -s $source --skip-duplicate
                     } else {
-                        "WhatIf: & dotnet nuget push $FullName -k `"${token}`" -s 'https://api.nuget.org/v3/index.json' --skip-duplicate"
+                        "WhatIf: & dotnet nuget push $FullName -k `"${token}`" -s $source --skip-duplicate"
                     }
 
                     Test-ExitCode $LASTEXITCODE "Failed to build [${project.FullName}]."
