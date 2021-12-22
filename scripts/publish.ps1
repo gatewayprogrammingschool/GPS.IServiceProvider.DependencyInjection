@@ -27,6 +27,8 @@ try {
         throw "No Nuget Token was supplied."
     }
 
+    $config = Get-ChildItem nuget.config -ErrorAction Stop
+
     $project = Get-ChildItem -Path ./src *.csproj -Recurse -ErrorAction Stop
 
     if($project) {
@@ -56,16 +58,18 @@ try {
                 $package = $_
 
                 try {
-                    $fullName = $package.FullName
+                    $Name = $package.Name
+
+                    Set-Location $package.Directory
 
                     if(!$WhatIf) {
-                        "& dotnet nuget push $FullName -k `"`${token}`" -s `"${Source}`" # --skip-duplicate"
-                        & dotnet nuget push $FullName -k "${token}" -s "${Source}" # --skip-duplicate
+                        "& dotnet nuget push $Name -k `"`${token}`" --configfile $config.FullName # --skip-duplicate"
+                        & dotnet nuget push $Name -k "${token}" --configfile $config.FullName # --skip-duplicate
                     } else {
-                        "WhatIf: & dotnet nuget push $FullName -k `"${token}`" -s $source # --skip-duplicate"
+                        "WhatIf: & dotnet nuget push $Name -k `"`${token}`"  --configfile $config.FullName # --skip-duplicate"
                     }
 
-                    Test-ExitCode $LASTEXITCODE "Failed to build [${project.FullName}]."
+                    Test-ExitCode $LASTEXITCODE "Failed to push [${package.Name}]."
                 }
                 catch {
                     throw $_
