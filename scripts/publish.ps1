@@ -66,11 +66,11 @@ try {
 
                     Set-Location $package.Directory
                     
-                    copy $ConfigFile . -Verbose -ErrorAction Stop
+                    Copy-Item $ConfigFile . -ErrorAction Stop
 
                     if(!$WhatIf) {
-                        "& dotnet nuget push $Name -k `"`${token}`" # --skip-duplicate"
-                        & dotnet nuget push $Name -k "${token}" # --skip-duplicate
+                        "& dotnet nuget push $Name --source `"nuget`" -k `"`${token}`" # --skip-duplicate"
+                        & dotnet nuget push $Name --source "nuget" -k "${token}" # --skip-duplicate
                     } else {
                         "WhatIf: & dotnet nuget push $Name -k `"`${token}`"  --config $ConfigFile # --skip-duplicate"
                     }
