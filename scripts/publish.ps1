@@ -67,10 +67,10 @@ try {
                     Set-Location $package.Directory
 
                     if(!$WhatIf) {
-                        "& dotnet nuget push $Name -k `"`${token}`" --configfile $ConfigFile # --skip-duplicate"
-                        & dotnet nuget push $Name -k "${token}" --configfile $ConfigFile # --skip-duplicate
+                        "& dotnet nuget push $Name -k `"`${token}`" --config $ConfigFile # --skip-duplicate"
+                        & dotnet nuget push $Name -k "${token}" --config $ConfigFile # --skip-duplicate
                     } else {
-                        "WhatIf: & dotnet nuget push $Name -k `"`${token}`"  --configfile $ConfigFile # --skip-duplicate"
+                        "WhatIf: & dotnet nuget push $Name -k `"`${token}`"  --config $ConfigFile # --skip-duplicate"
                     }
 
                     Test-ExitCode $LASTEXITCODE "Failed to push [${package.Name}]."
