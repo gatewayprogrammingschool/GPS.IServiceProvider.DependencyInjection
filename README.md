@@ -2,6 +2,16 @@
 
 Allows initialization of objects obtained from IServiceProvider.
 
+## Here's Our Badges
+
+| Technical | Social |
+|---|---|
+| [![.NET](https://github.com/gatewayprogrammingschool/GPS.IServiceProvider.Extensions/actions/workflows/dotnet.yml/badge.svg)](https://github.com/gatewayprogrammingschool/GPS.IServiceProvider.Extensions/actions/workflows/dotnet.yml) | ![Repo Stars](https://img.shields.io/github/stars/gatewayprogrammingschool/GPS.IServiceProvider.Extensions?label=Repository%20Stars&style=plastic) |
+| [![Codacy Security Scan](https://github.com/gatewayprogrammingschool/GPS.IServiceProvider.Extensions/actions/workflows/codacy-analysis.yml/badge.svg)](https://github.com/gatewayprogrammingschool/GPS.IServiceProvider.Extensions/actions/workflows/codacy-analysis.yml) | |
+| [![CodeQL](https://github.com/gatewayprogrammingschool/GPS.IServiceProvider.Extensions/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/gatewayprogrammingschool/GPS.IServiceProvider.Extensions/actions/workflows/codeql-analysis.yml) | |
+
+
+
 ## Example Usage
 
 ```csharp
