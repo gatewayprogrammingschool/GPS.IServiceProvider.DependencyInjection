@@ -29,6 +29,10 @@ try {
 
     $config = Get-ChildItem nuget.config -ErrorAction Stop
 
+    if (-not $config) { throw "could not locate nuget.config in the root of the project." }
+
+    $ConfigFile = $config.FullName
+
     $project = Get-ChildItem -Path ./src *.csproj -Recurse -ErrorAction Stop
 
     if($project) {
@@ -63,10 +67,10 @@ try {
                     Set-Location $package.Directory
 
                     if(!$WhatIf) {
-                        "& dotnet nuget push $Name -k `"`${token}`" --configfile ${config.FullName} # --skip-duplicate"
-                        & dotnet nuget push $Name -k "${token}" --configfile ${config.FullName} # --skip-duplicate
+                        "& dotnet nuget push $Name -k `"`${token}`" --configfile $ConfigFile # --skip-duplicate"
+                        & dotnet nuget push $Name -k "${token}" --configfile $ConfigFile # --skip-duplicate
                     } else {
-                        "WhatIf: & dotnet nuget push $Name -k `"`${token}`"  --configfile ${config.FullName} # --skip-duplicate"
+                        "WhatIf: & dotnet nuget push $Name -k `"`${token}`"  --configfile $ConfigFile # --skip-duplicate"
                     }
 
                     Test-ExitCode $LASTEXITCODE "Failed to push [${package.Name}]."

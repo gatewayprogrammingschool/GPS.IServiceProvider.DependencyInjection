@@ -37,11 +37,11 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build Debug and Test
-      if: ${{ github.event_name != 'release' }}
+      if: ${{ github.event_name != 'release' && github.event_name != 'workflow_dispatch' }}
       run: |
         dotnet build -c Debug --no-restore
         dotnet test --no-build
 
     - name: Build Release and Publish
-      if: ${{ github.event_name == 'release' }}
+      if: ${{ github.event_name == 'release' || github.event_name == 'workflow_dispatch' }}
       run: pwsh -nol -nop -f ./scripts/publish.ps1 "${{ secrets.NUGET_KEY }}"
