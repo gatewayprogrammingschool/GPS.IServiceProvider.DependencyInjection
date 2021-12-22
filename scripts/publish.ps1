@@ -59,10 +59,10 @@ try {
                     $fullName = $package.FullName
 
                     if(!$WhatIf) {
-                        "& dotnet nuget push $FullName -k `"`${token}`" -s `"${Source}`" --skip-duplicate"
-                        & dotnet nuget push $FullName -k "${token}" -s "${Source}" --skip-duplicate
+                        "& dotnet nuget push $FullName -k `"`${token}`" -s `"${Source}`" # --skip-duplicate"
+                        & dotnet nuget push $FullName -k "${token}" -s "${Source}" # --skip-duplicate
                     } else {
-                        "WhatIf: & dotnet nuget push $FullName -k `"${token}`" -s $source --skip-duplicate"
+                        "WhatIf: & dotnet nuget push $FullName -k `"${token}`" -s $source # --skip-duplicate"
                     }
 
                     Test-ExitCode $LASTEXITCODE "Failed to build [${project.FullName}]."
