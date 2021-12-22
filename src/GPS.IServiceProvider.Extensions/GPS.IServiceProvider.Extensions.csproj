@@ -6,6 +6,7 @@
     <Nullable>disable</Nullable>
     <LangVersion>10.0</LangVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>IServiceProviderExtensions</PackageId>
     <Authors>The Sharp Ninja &amp;lt;ninja@thesharp.ninja&amp;gt;</Authors>
     <Company>Gateway Programming School, Inc.</Company>
     <Description>Provides extension methods for initializing an object when obtaining from IServiceProvider.</Description>
@@ -13,7 +14,7 @@
     <PackageProjectUrl>https://github.com/gatewayprogrammingschool/GPS.IServiceProvider.Extensions</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/gatewayprogrammingschool/GPS.IServiceProvider.Extensions</RepositoryUrl>
-    <PackageTags>Extensions DependencyInjection</PackageTags>
+    <PackageTags>Extensions DependencyInjection IServiceProvider</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
